@@ -703,6 +703,11 @@ post:
     # Options: mathjax | katex
     engine: mathjax
 
+    mathjax:
+      # 设为 true 则公式将在本地静态生成（Markdown 渲染器必须为 hexo-renderer-pandoc），设为 false 则在浏览器中通过 js 动态生成
+      # If true, it will be generated locally (the Markdown renderer must be hexo-renderer-pandoc). If false, it will generated dynamic via js in the browser
+      preprocess: false
+
   # 流程图，基于 mermaid-js，具体请见：https://hexo.fluid-dev.com/docs/guide/#mermaid-流程图
   # Flow chart, based on mermaid-js, see: https://hexo.fluid-dev.com/docs/en/guide/#mermaid
   mermaid:
