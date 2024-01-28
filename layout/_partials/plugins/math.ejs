@@ -1,8 +1,9 @@
-<% if(theme.post.math.engine === 'mathjax') { %>
-  <% if(theme.post.math.mathjax.preprocess === true) { %>
+<% if (theme.post.math.engine === 'mathjax') { %>
+  <% if (theme.post.math.mathjax.preprocess === true) { %>
     <%
-      if(page._id in theme._mathjax_css) {
-        import_style(theme._mathjax_css[page._id]);
+      if (page._bypass.mathjax !== undefined) {
+        const css = page._bypass.mathjax.css
+        import_style(`<style>${css}</style>`)
       }
     %>
 

@@ -26,10 +26,12 @@ hexo.extend.filter.register('after_post_render', (data) => {
       const css = adaptor.textContent(chtml.styleSheet(html));
       data.content = adaptor.innerHTML(adaptor.body(html.document));
 
-      if(hexo.theme.config._mathjax_css === undefined) {
-        hexo.theme.config._mathjax_css = [];
+      data._bypass.mathjax = {
+        css: css
       }
-      hexo.theme.config._mathjax_css[data._id] = `<style>${css}</style>`;
+
+      return data;
     }
   }
 });
+
