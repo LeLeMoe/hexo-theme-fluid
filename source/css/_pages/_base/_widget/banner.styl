@@ -18,6 +18,11 @@
 
 if $banner-width-height-ratio > 0
   @media (max-width: unit($banner-width-height-ratio * 100, "vh"))
+    .banner
+      .mask
+        .flex-center
+          height 100% !important
+
     .header-inner
       max-height unit(100 / $banner-width-height-ratio, "vw")
 

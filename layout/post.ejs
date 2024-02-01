@@ -2,6 +2,7 @@
 page.banner_img = page.banner_img || theme.post.banner_img
 page.banner_img_height = page.banner_img_height || theme.post.banner_img_height
 page.banner_mask_alpha = page.banner_mask_alpha || theme.post.banner_mask_alpha
+var board_top_margin = 100 - page.banner_img_height
 %>
 
 <div class="container-fluid nopadding-x">
@@ -12,7 +13,10 @@ page.banner_mask_alpha = page.banner_mask_alpha || theme.post.banner_mask_alpha
 
     <div class="col-lg-8 nopadding-x-md">
       <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
+        <% if (theme.board.ground_glass.enable) { %>
+          <div class="board-glass" style="max-height: <%= board_top_margin + 50 %>vh"></div>
+        <% } %>
+        <div id="board" style="margin-top: -<%= board_top_margin %>vh; min-height: <%= board_top_margin %>vh;">
           <article class="post-content mx-auto">
             <h1 id="seo-header"><%= page.subtitle || page.title %></h1>
             <% if (theme.post.updated.enable && theme.post.updated && compare_date(page.date, page.updated)) { %>

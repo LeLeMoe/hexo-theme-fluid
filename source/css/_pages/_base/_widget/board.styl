@@ -2,9 +2,42 @@
   position relative
   margin-top -2rem
   padding 3rem 0
-  background-color var(--board-bg-color)
   transition background-color .2s ease-in-out
   border-radius 0.5rem
   z-index 3
   -webkit-box-shadow 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
   box-shadow 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
+
+  if $banner-width-height-ratio > 0
+    @media (max-width: unit($banner-width-height-ratio * 100, "vh"))
+      min-height 0 !important
+
+/* Board 毛玻璃效果 */
+if $board-glass-enable
+  .board-glass
+    position absolute
+    border-radius 0.5rem
+
+  @supports (-webkit-backdrop-filter: blur($board-glass-px)) or (backdrop-filter: blur($board-glass-px))
+    #board
+      background-color var(--board-bg-color-glass)
+
+    .board-glass
+      -webkit-backdrop-filter blur($board-glass-px)
+      backdrop-filter blur($board-glass-px)
+
+    @media (max-width: unit($banner-width-height-ratio * 100, "vh"))
+      #board
+        background-color var(--board-bg-color)
+    
+      .board-glass
+        -webkit-backdrop-filter none
+        backdrop-filter none
+
+  @supports not ((-webkit-backdrop-filter: blur($board-glass-px)) or (backdrop-filter: blur($board-glass-px)))
+    #board
+      background-color var(--board-bg-color)
+
+else
+  #board
+    background-color var(--board-bg-color)

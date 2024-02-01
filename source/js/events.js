@@ -46,7 +46,7 @@ Fluid.events = {
     }
     var parallax = function() {
       var pxv = jQuery(window).scrollTop() / 5;
-      var offset = parseInt(board.css('margin-top'), 10);
+      var offset = 0;
       var max = 96 + offset;
       if (pxv > max) {
         pxv = max;
@@ -114,6 +114,27 @@ Fluid.events = {
         easing   : 'swing'
       });
     });
+  },
+
+  registerBoardGlassEvent: function() {
+    var board = jQuery('#board');
+    if (board.length === 0) {
+      return;
+    }
+    if (jQuery('.board-glass').length !== 0) {
+      new ResizeObserver(function(entries) {
+        if (entries.length === 0) {
+          return;
+        }
+        if (entries[0].borderBoxSize.length === 0) {
+          return;
+        }
+        var size = entries[0].borderBoxSize[0];
+        var board_glass = jQuery('.board-glass');
+        board_glass.width(size.inlineSize);
+        board_glass.height(size.blockSize);
+      }).observe(board[0]);
+    }
   },
 
   registerImageLoadedEvent: function() {

@@ -9,6 +9,7 @@ Fluid.boot.registerEvents = function() {
   Fluid.events.registerScrollDownArrowEvent();
   Fluid.events.registerScrollTopArrowEvent();
   Fluid.events.registerImageLoadedEvent();
+  Fluid.events.registerBoardGlassEvent();
 };
 
 Fluid.boot.refresh = function() {

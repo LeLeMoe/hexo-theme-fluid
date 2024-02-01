@@ -22,6 +22,9 @@
   --fold-title-color $text-color
   --fold-border-color $line-color
 
+  if $board-glass-enable
+    --board-bg-color-glass rgba(convert($board-bg-color), $board-glass-alpha)
+
 dark-colors()
   --body-bg-color $body-bg-color-dark
   --board-bg-color $board-bg-color-dark
@@ -44,6 +47,9 @@ dark-colors()
   --inlinecode-bg-color $inlinecode-bg-color-dark
   --fold-title-color $text-color-dark
   --fold-border-color $line-color-dark
+
+  if $board-glass-enable
+    --board-bg-color-glass rgba(convert($board-bg-color-dark), $board-glass-alpha)
 
   img
     -webkit-filter brightness(.9)
